@@ -16,6 +16,7 @@ export type ICheckListProps = {
   checkboxUncheckedStyle?: ViewProps['style'];
   checkmarkStyle?: ViewProps['style'];
   otherStyles?: IUseParseHtmlTags['styles'];
+  textProps?: Omit<TextProps, 'style' | 'children'>;
 };
 
 const CheckList = ({
@@ -29,6 +30,7 @@ const CheckList = ({
   contentContainerStyle,
   checkmarkStyle,
   otherStyles,
+  textProps,
 }: ICheckListProps) => {
   return (
     <FlatList
@@ -44,6 +46,7 @@ const CheckList = ({
           textStyle={textStyle}
           otherStyles={otherStyles}
           checkmarkStyle={checkmarkStyle}
+          textProps={textProps}
         />
       )}
       keyExtractor={(_, index) => index.toString()}

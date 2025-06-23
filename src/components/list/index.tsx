@@ -22,6 +22,7 @@ export type IListProps = {
     numberTextStyle?: TextProps['style'];
   };
   otherStyles?: IUseParseHtmlTags['styles'];
+  textProps?: Omit<TextProps, 'style' | 'children'>;
 };
 
 const List = ({
@@ -30,6 +31,7 @@ const List = ({
   contentContainerStyle,
   listItemStyle,
   otherStyles,
+  textProps,
 }: IListProps) => {
   const sections = useMemo(() => {
     return [{ data: data.items }];
@@ -52,6 +54,7 @@ const List = ({
           dotStyle={listItemStyle?.dotStyle}
           numberTextStyle={listItemStyle?.numberTextStyle}
           otherStyles={otherStyles}
+          textProps={textProps}
         />
       )}
     />

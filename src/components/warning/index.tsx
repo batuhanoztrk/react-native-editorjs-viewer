@@ -13,6 +13,7 @@ export type IWarningProps = {
   titleTextStyle?: TextProps['style'];
   messageTextStyle?: TextProps['style'];
   otherStyles?: IUseParseHtmlTags['styles'];
+  textProps?: Omit<TextProps, 'style' | 'children'>;
 };
 
 const Warning = ({
@@ -21,12 +22,14 @@ const Warning = ({
   titleTextStyle,
   messageTextStyle,
   otherStyles,
+  textProps,
 }: IWarningProps) => {
   const { defaultTagList, parseHtmlTag: parseTitleHtmlTag } = useParseHtmlTags({
     styles: {
       ...otherStyles,
       textStyle: titleTextStyle,
     },
+    textProps,
   });
 
   const { parseHtmlTag: parseMessageHtmlTag } = useParseHtmlTags({
@@ -34,6 +37,7 @@ const Warning = ({
       ...otherStyles,
       textStyle: messageTextStyle,
     },
+    textProps,
   });
 
   const parsedTitle = useMemo(
@@ -49,8 +53,8 @@ const Warning = ({
 
   return (
     <View style={[styles.container, containerStyle]}>
-      <Text style={[styles.title, titleTextStyle]}>{parsedTitle}</Text>
-      <Text style={[styles.message, messageTextStyle]}>{parsedMessage}</Text>
+      <Text {...textProps} style={[styles.title, titleTextStyle]}>{parsedTitle}</Text>
+      <Text {...textProps} style={[styles.message, messageTextStyle]}>{parsedMessage}</Text>
     </View>
   );
 };

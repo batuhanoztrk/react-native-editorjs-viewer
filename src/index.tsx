@@ -61,6 +61,7 @@ const EditorJsViewer = ({
               componentStyles?.fallback?.containerStyle,
             ]}
             textStyle={componentStyles?.fallback?.textStyle}
+            textProps={textProps}
           />
         ) : null;
       })}

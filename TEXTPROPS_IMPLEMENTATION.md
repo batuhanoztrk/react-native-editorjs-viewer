@@ -48,6 +48,15 @@ import EditorJsViewer from '@fintables/react-native-editorjs-viewer';
 - `src/components/header/index.tsx` - `textProps` prop'u eklendi
 - `src/components/quote/index.tsx` - `textProps` prop'u eklendi
 - `src/components/delimiter/index.tsx` - `textProps` prop'u eklendi
+- `src/components/list/index.tsx` - `textProps` prop'u eklendi
+- `src/components/list/listItem/index.tsx` - `textProps` prop'u eklendi
+- `src/components/table/index.tsx` - `textProps` zaten mevcuttu, global ile birleştirildi
+- `src/components/image/index.tsx` - `textProps` prop'u eklendi
+- `src/components/warning/index.tsx` - `textProps` prop'u eklendi
+- `src/components/linkTool/index.tsx` - `textProps` zaten mevcuttu, global ile birleştirildi
+- `src/components/checkList/index.tsx` - `textProps` prop'u eklendi
+- `src/components/checkList/checkListItem/index.tsx` - `textProps` prop'u eklendi
+- `src/components/fallback/index.tsx` - `textProps` prop'u eklendi
 
 ### SubComponent'ler
 - `src/subComponents/bold/index.tsx` - `textProps` spread operatörü eklendi

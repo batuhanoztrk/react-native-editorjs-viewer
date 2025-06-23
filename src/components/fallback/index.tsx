@@ -10,12 +10,13 @@ export type IFallbackProps = {
   blockType: string;
   containerStyle?: ViewProps['style'];
   textStyle?: TextProps['style'];
+  textProps?: Omit<TextProps, 'style' | 'children'>;
 };
 
-const Fallback = ({ blockType, containerStyle, textStyle }: IFallbackProps) => {
+const Fallback = ({ blockType, containerStyle, textStyle, textProps }: IFallbackProps) => {
   return (
     <View accessibilityRole="alert" style={[styles.container, containerStyle]}>
-      <Text accessible style={[styles.alertText, textStyle]}>
+      <Text accessible {...textProps} style={[styles.alertText, textStyle]}>
         Type &quot;{blockType}&quot; is yet not supported
       </Text>
     </View>

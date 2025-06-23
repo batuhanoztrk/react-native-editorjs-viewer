@@ -18,6 +18,7 @@ export type IItemIListProps = {
   numberTextStyle?: TextProps['style'];
   textStyle?: TextProps['style'];
   otherStyles?: IUseParseHtmlTags['styles'];
+  textProps?: Omit<TextProps, 'style' | 'children'>;
 };
 
 const ListItem = ({
@@ -29,9 +30,11 @@ const ListItem = ({
   numberTextStyle,
   containerStyle,
   otherStyles,
+  textProps,
 }: IItemIListProps) => {
   const { parseHtmlTag, defaultTagList } = useParseHtmlTags({
     styles: otherStyles,
+    textProps,
   });
 
   const parsedText = useMemo(
@@ -45,7 +48,7 @@ const ListItem = ({
         {
           ordered: <View style={[styles.listStyleDot, dotStyle]} />,
           unordered: (
-            <Text style={[styles.listStyleNumber, numberTextStyle]}>
+            <Text {...textProps} style={[styles.listStyleNumber, numberTextStyle]}>
               {index + 1}.
             </Text>
           ),
@@ -56,6 +59,7 @@ const ListItem = ({
         accessible
         accessibilityRole="text"
         allowFontScaling={true}
+        {...textProps}
         style={[styles.listItem, textStyle]}
       >
         {parsedText}

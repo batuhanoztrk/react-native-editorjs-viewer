@@ -22,6 +22,7 @@ export type IImageProps = {
   imageStyle?: ImageProps['style'];
   textStyle?: TextProps['style'];
   otherStyles?: IUseParseHtmlTags['styles'];
+  textProps?: Omit<TextProps, 'style' | 'children'>;
 };
 
 const Image = ({
@@ -30,12 +31,14 @@ const Image = ({
   textStyle,
   imageStyle,
   otherStyles,
+  textProps,
 }: IImageProps) => {
   const { parseHtmlTag, defaultTagList } = useParseHtmlTags({
     styles: {
       ...otherStyles,
       textStyle: textStyle,
     },
+    textProps,
   });
 
   const parsedText = useMemo(
@@ -55,7 +58,7 @@ const Image = ({
       />
 
       {parsedText && (
-        <Text aria-hidden style={[styles.caption, textStyle]}>
+        <Text aria-hidden {...textProps} style={[styles.caption, textStyle]}>
           {parsedText}
         </Text>
       )}

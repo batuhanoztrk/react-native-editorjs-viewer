@@ -24,6 +24,7 @@ export type ICheckListItemProps = {
   textStyle?: TextProps['style'];
   otherStyles?: IUseParseHtmlTags['styles'];
   checkmarkStyle?: ViewProps['style'];
+  textProps?: Omit<TextProps, 'style' | 'children'>;
 };
 
 const CheckListItem = ({
@@ -35,12 +36,14 @@ const CheckListItem = ({
   textStyle,
   otherStyles,
   checkmarkStyle,
+  textProps,
 }: ICheckListItemProps) => {
   const { parseHtmlTag, defaultTagList } = useParseHtmlTags({
     styles: {
       ...otherStyles,
       textStyle: textStyle,
     },
+    textProps,
   });
 
   const parsedText = useMemo(
@@ -57,7 +60,7 @@ const CheckListItem = ({
         uncheckedStyle={checkboxUncheckedStyle}
         checkmarkStyle={checkmarkStyle}
       />
-      <Text style={[styles.text, textStyle]}>{parsedText}</Text>
+      <Text {...textProps} style={[styles.text, textStyle]}>{parsedText}</Text>
     </View>
   );
 };

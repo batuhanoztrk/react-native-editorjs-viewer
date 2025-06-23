@@ -173,6 +173,7 @@ function useComponentMap(
               componentStyles?.image?.textStyle,
             ]}
             imageStyle={componentStyles?.image?.imageStyle}
+            textProps={textProps}
             otherStyles={{
               boldTextStyle: [
                 defaultStyles?.textStyle,
@@ -239,11 +240,9 @@ function useComponentMap(
               componentStyles?.linkTool?.linkTextStyle,
             ]}
             imageStyle={componentStyles?.linkTool?.imageStyle}
-            titleTextProps={componentProps?.linkTool?.titleTextProps}
-            descriptionTextProps={
-              componentProps?.linkTool?.descriptionTextProps
-            }
-            linkTextProps={componentProps?.linkTool?.linkTextProps}
+            titleTextProps={{...textProps, ...componentProps?.linkTool?.titleTextProps}}
+            descriptionTextProps={{...textProps, ...componentProps?.linkTool?.descriptionTextProps}}
+            linkTextProps={{...textProps, ...componentProps?.linkTool?.linkTextProps}}
             imageProps={componentProps?.linkTool?.imageProps}
           />
         );
@@ -328,6 +327,7 @@ function useComponentMap(
               ],
             }}
             contentContainerStyle={componentStyles?.list?.contentContainerStyle}
+            textProps={textProps}
             otherStyles={{
               boldTextStyle: [
                 defaultStyles?.textStyle,
@@ -392,7 +392,7 @@ function useComponentMap(
               componentStyles?.table?.contentContainerStyle
             }
             separatorStyle={componentStyles?.table?.separatorStyle}
-            textProps={componentProps?.table?.textProps}
+            textProps={{...textProps, ...componentProps?.table?.textProps}}
             flatListProps={componentProps?.table?.flatListProps}
           />
         );
@@ -415,6 +415,7 @@ function useComponentMap(
               defaultStyles?.textStyle,
               componentStyles?.warning?.textStyle,
             ]}
+            textProps={textProps}
             otherStyles={{
               boldTextStyle: [
                 defaultStyles?.textStyle,
@@ -488,6 +489,7 @@ function useComponentMap(
             contentContainerStyle={
               componentStyles?.checklist?.contentContainerStyle
             }
+            textProps={textProps}
             otherStyles={{
               boldTextStyle: [
                 defaultStyles?.textStyle,
