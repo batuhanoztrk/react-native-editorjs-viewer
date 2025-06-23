@@ -19,6 +19,7 @@ export type IQuoteProps = {
   textStyle?: TextProps['style'];
   captionTextStyle?: TextProps['style'];
   otherStyles?: IUseParseHtmlTags['styles'];
+  textProps?: Omit<TextProps, 'style' | 'children'>;
 };
 
 const Quote = ({
@@ -27,12 +28,14 @@ const Quote = ({
   textStyle,
   captionTextStyle,
   otherStyles,
+  textProps,
 }: IQuoteProps) => {
   const { parseHtmlTag, defaultTagList } = useParseHtmlTags({
     styles: {
       ...otherStyles,
       textStyle,
     },
+    textProps,
   });
 
   const parsedText = useMemo(
@@ -45,6 +48,7 @@ const Quote = ({
       <Text
         accessibilityRole="text"
         allowFontScaling={true}
+        {...textProps}
         style={[
           styles.quoteText,
           {
@@ -58,6 +62,7 @@ const Quote = ({
 
       {data.caption && (
         <Text
+          {...textProps}
           style={[
             styles.caption,
             { textAlign: data.alignment ?? 'left' },

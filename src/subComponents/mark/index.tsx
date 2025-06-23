@@ -4,11 +4,11 @@ import type { ReactNode } from 'react';
 export type IMarkProps = {
   children?: ReactNode;
   style?: TextProps['style'];
-};
+} & Omit<TextProps, 'style' | 'children'>;
 
-const Mark = ({ children, style }: IMarkProps) => {
+const Mark = ({ children, style, ...textProps }: IMarkProps) => {
   return (
-    <Text allowFontScaling={true} style={[styles.mark, style]}>
+    <Text allowFontScaling={true} {...textProps} style={[styles.mark, style]}>
       {children}
     </Text>
   );

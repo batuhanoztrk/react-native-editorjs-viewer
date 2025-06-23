@@ -4,11 +4,11 @@ import type { ReactNode } from 'react';
 export type ICodeProps = {
   children?: ReactNode;
   style?: TextProps['style'];
-};
+} & Omit<TextProps, 'style' | 'children'>;
 
-const Code = ({ children, style }: ICodeProps) => {
+const Code = ({ children, style, ...textProps }: ICodeProps) => {
   return (
-    <Text allowFontScaling={true} style={[styles.code, style]}>
+    <Text allowFontScaling={true} {...textProps} style={[styles.code, style]}>
       {children}
     </Text>
   );

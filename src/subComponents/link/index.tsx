@@ -5,9 +5,9 @@ export type ILinkProps = {
   children?: ReactNode;
   style?: TextProps['style'];
   href?: string;
-};
+} & Omit<TextProps, 'style' | 'children' | 'onPress'>;
 
-const Link = ({ children, style, href }: ILinkProps) => {
+const Link = ({ children, style, href, ...textProps }: ILinkProps) => {
   const handleOpenLink = useCallback(async (link?: string) => {
     if (!link) {
       Alert.alert('Missing linkTool');
@@ -24,6 +24,7 @@ const Link = ({ children, style, href }: ILinkProps) => {
   return (
     <Text
       allowFontScaling={true}
+      {...textProps}
       style={[styles.link, style]}
       onPress={() => handleOpenLink(href)}
     >

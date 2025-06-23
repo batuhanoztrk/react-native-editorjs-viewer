@@ -51,6 +51,7 @@ export type IUseParseHtmlTags = {
 export type EditorJsViewerProps = {
   data: IEditorJsData;
   showFallback?: boolean;
+  textProps?: Omit<TextProps, 'style' | 'children'>;
   components?: {
     Paragraph?: React.ComponentType<IParagraphProps>;
     Header?: React.ComponentType<IHeaderProps>;

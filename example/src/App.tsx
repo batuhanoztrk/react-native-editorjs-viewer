@@ -10,6 +10,11 @@ export default function App() {
           data={data}
           showFallback={true}
           style={styles.editorJsContainer}
+          textProps={{
+            maxFontSizeMultiplier: 2.0,
+            allowFontScaling: true,
+            adjustsFontSizeToFit: false,
+          }}
         />
       </ScrollView>
     </SafeAreaView>

@@ -10,9 +10,10 @@ export type IHeaderProps = {
   };
   style?: (level: 1 | 2 | 3 | 4 | 5 | 6) => TextProps['style'];
   otherStyles?: (level: 1 | 2 | 3 | 4 | 5 | 6) => IUseParseHtmlTags['styles'];
+  textProps?: Omit<TextProps, 'style' | 'children'>;
 };
 
-const Header = ({ data, style, otherStyles }: IHeaderProps) => {
+const Header = ({ data, style, otherStyles, textProps }: IHeaderProps) => {
   const headingStyleByLevel = useMemo(
     () => styles[`h${data.level}`],
     [data.level]
@@ -23,6 +24,7 @@ const Header = ({ data, style, otherStyles }: IHeaderProps) => {
       ...otherStyles?.(data.level),
       textStyle: style?.(data.level),
     },
+    textProps,
   });
 
   const parsedText = useMemo(
@@ -35,6 +37,7 @@ const Header = ({ data, style, otherStyles }: IHeaderProps) => {
       accessible
       accessibilityRole="header"
       allowFontScaling={true}
+      {...textProps}
       style={[styles.header, headingStyleByLevel, style?.(data.level)]}
     >
       {parsedText}

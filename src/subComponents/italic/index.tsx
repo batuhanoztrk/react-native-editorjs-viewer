@@ -4,11 +4,11 @@ import type { ReactNode } from 'react';
 export type IItalicProps = {
   children?: ReactNode;
   style?: TextProps['style'];
-};
+} & Omit<TextProps, 'style' | 'children'>;
 
-const Italic = ({ children, style }: IItalicProps) => {
+const Italic = ({ children, style, ...textProps }: IItalicProps) => {
   return (
-    <Text allowFontScaling={true} style={[styles.italic, style]}>
+    <Text allowFontScaling={true} {...textProps} style={[styles.italic, style]}>
       {children}
     </Text>
   );

@@ -4,11 +4,11 @@ import type { ReactNode } from 'react';
 export type IBoldProps = {
   children?: ReactNode;
   style?: TextProps['style'];
-};
+} & Omit<TextProps, 'style' | 'children'>;
 
-const Bold = ({ children, style }: IBoldProps) => {
+const Bold = ({ children, style, ...textProps }: IBoldProps) => {
   return (
-    <Text allowFontScaling={true} style={[styles.bold, style]}>
+    <Text allowFontScaling={true} {...textProps} style={[styles.bold, style]}>
       {children}
     </Text>
   );

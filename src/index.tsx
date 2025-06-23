@@ -6,6 +6,7 @@ import { useComponentMap } from './hooks';
 const EditorJsViewer = ({
   data,
   showFallback = false,
+  textProps,
   components,
   customComponents,
   componentStyles,
@@ -18,7 +19,8 @@ const EditorJsViewer = ({
     componentStyles,
     defaultStyles,
     customComponents,
-    componentProps
+    componentProps,
+    textProps
   );
 
   return (

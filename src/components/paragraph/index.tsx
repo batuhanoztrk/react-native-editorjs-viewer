@@ -9,14 +9,16 @@ export type IParagraphProps = {
   };
   style?: TextProps['style'];
   otherStyles?: IUseParseHtmlTags['styles'];
+  textProps?: Omit<TextProps, 'style' | 'children'>;
 };
 
-const Paragraph = ({ data, style, otherStyles }: IParagraphProps) => {
+const Paragraph = ({ data, style, otherStyles, textProps }: IParagraphProps) => {
   const { parseHtmlTag, defaultTagList } = useParseHtmlTags({
     styles: {
       ...otherStyles,
       textStyle: style,
     },
+    textProps,
   });
 
   const parsedText = useMemo(
@@ -29,6 +31,7 @@ const Paragraph = ({ data, style, otherStyles }: IParagraphProps) => {
       accessible
       accessibilityRole="text"
       allowFontScaling={true}
+      {...textProps}
       style={[styles.paragraph, style]}
     >
       {parsedText}

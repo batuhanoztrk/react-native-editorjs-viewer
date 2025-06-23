@@ -11,14 +11,15 @@ export type IDelimiterProps = {
   data: Record<string, never>;
   containerStyle?: ViewProps['style'];
   textStyle?: TextProps['style'];
+  textProps?: Omit<TextProps, 'style' | 'children'>;
 };
 
-const Delimiter = ({ containerStyle, textStyle }: IDelimiterProps) => {
+const Delimiter = ({ containerStyle, textStyle, textProps }: IDelimiterProps) => {
   return (
     <View aria-hidden style={[styles.container, containerStyle]}>
-      <Text style={[styles.delimiter, textStyle]}>{decode('&ast;')}</Text>
-      <Text style={[styles.delimiter, textStyle]}>{decode('&ast;')}</Text>
-      <Text style={[styles.delimiter, textStyle]}>{decode('&ast;')}</Text>
+      <Text {...textProps} style={[styles.delimiter, textStyle]}>{decode('&ast;')}</Text>
+      <Text {...textProps} style={[styles.delimiter, textStyle]}>{decode('&ast;')}</Text>
+      <Text {...textProps} style={[styles.delimiter, textStyle]}>{decode('&ast;')}</Text>
     </View>
   );
 };

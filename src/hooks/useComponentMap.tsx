@@ -24,7 +24,8 @@ function useComponentMap(
   componentStyles: EditorJsViewerProps['componentStyles'],
   defaultStyles: EditorJsViewerProps['defaultStyles'],
   customComponents: EditorJsViewerProps['customComponents'],
-  componentProps: EditorJsViewerProps['componentProps']
+  componentProps: EditorJsViewerProps['componentProps'],
+  textProps: EditorJsViewerProps['textProps']
 ): IComponentObject {
   return useMemo(() => {
     const Paragraph = components?.Paragraph || ParagraphComponent;
@@ -50,6 +51,7 @@ function useComponentMap(
               defaultStyles?.textStyle,
               componentStyles?.paragraph?.textStyle,
             ]}
+            textProps={textProps}
             otherStyles={{
               boldTextStyle: [
                 defaultStyles?.textStyle,
@@ -100,6 +102,7 @@ function useComponentMap(
               defaultStyles?.textStyle,
               componentStyles?.header?.textStyle?.(level),
             ]}
+            textProps={textProps}
             otherStyles={(level) => ({
               boldTextStyle: [
                 defaultStyles?.textStyle,
@@ -153,6 +156,7 @@ function useComponentMap(
               defaultStyles?.textStyle,
               componentStyles?.delimiter?.textStyle,
             ]}
+            textProps={textProps}
           />
         );
       },
@@ -260,6 +264,7 @@ function useComponentMap(
               defaultStyles?.textStyle,
               componentStyles?.quote?.captionTextStyle,
             ]}
+            textProps={textProps}
             otherStyles={{
               boldTextStyle: [
                 defaultStyles?.textStyle,
@@ -561,6 +566,7 @@ function useComponentMap(
     customComponents,
     componentProps,
     defaultStyles,
+    textProps,
   ]) as IComponentObject;
 }
 
